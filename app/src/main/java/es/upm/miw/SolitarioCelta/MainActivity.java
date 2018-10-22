@@ -108,6 +108,9 @@ public class MainActivity extends AppCompatActivity implements
                 return true;
             case R.id.guardar:
                 this.mJuego.guardarPartida(getApplicationContext());
+                Toast.makeText(getApplicationContext(), R.string.partidaGuardada,
+                        Toast.LENGTH_SHORT).show();
+                return true;
             case R.id.cargar:
                 this.setPartidaRecibida(this.mJuego.cargarPartida(getApplicationContext()));
                 if (this.getPartidaRecibida() != null) {

@@ -13,6 +13,7 @@
     <string name="preferencesText">Ajustes</string>
     <string name="saveGame">Guardar partida</string>
     <string name="cargarGame">Cargar partida</string>
+    <string name="partidaGuardada">Partida guardada</string>
     <string name="partidaCargada">Partida cargada</string>
 
     <!-- Diálogo Final -->
