@@ -6,30 +6,13 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.widget.Toast;
 
 public class LoadDialogFragment extends DialogFragment{
 
-    private DialogListener listener;
-
-    public interface DialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog);
-
-        public void onDialogNegativeClick(DialogFragment dialog);
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            listener = (DialogListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement DialogListener");
-        }
-    }
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        final MainActivity main = (MainActivity) getActivity();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(getString(R.string.txtDialogoLoadTitulo))
@@ -39,7 +22,7 @@ public class LoadDialogFragment extends DialogFragment{
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                listener.onDialogPositiveClick(LoadDialogFragment.this);
+                                main.cargarJuego(main.getPartidaRecibida());
                             }
                         }
                 )
@@ -48,7 +31,8 @@ public class LoadDialogFragment extends DialogFragment{
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                listener.onDialogNegativeClick(LoadDialogFragment.this);
+                                Toast.makeText(getContext(), android.R.string.no,
+                                        Toast.LENGTH_SHORT).show();
                             }
                         }
                 );

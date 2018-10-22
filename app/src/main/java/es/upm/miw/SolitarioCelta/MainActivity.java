@@ -1,21 +1,16 @@
 package es.upm.miw.SolitarioCelta;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import java.io.FileOutputStream;
-
-public class MainActivity extends AppCompatActivity implements
-        LoadDialogFragment.DialogListener {
+public class MainActivity extends AppCompatActivity {
 
 	JuegoCelta mJuego;
     private final String CLAVE_TABLERO = "TABLERO_SOLITARIO_CELTA";
@@ -115,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements
                 this.setPartidaRecibida(this.mJuego.cargarPartida(getApplicationContext()));
                 if (this.getPartidaRecibida() != null) {
                     if (!this.getPartidaRecibida().equalsIgnoreCase(this.mJuego.serializaTablero())) {
-                        DialogFragment dialogFragment = new LoadDialogFragment();
+                        dialogFragment = new LoadDialogFragment();
                         dialogFragment.show(getSupportFragmentManager(), "load");
                     } else {
                         this.cargarJuego(this.getPartidaRecibida());
@@ -128,22 +123,10 @@ public class MainActivity extends AppCompatActivity implements
         return super.onOptionsItemSelected(item);
     }
 
-    private void cargarJuego(String partida) {
+    public void cargarJuego(String partida) {
         this.mJuego.deserializaTablero(partida);
         this.mostrarTablero();
         Toast.makeText(getApplicationContext(), R.string.partidaCargada,
-                Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onDialogPositiveClick(DialogFragment dialog) {
-        this.cargarJuego(this.getPartidaRecibida());
-    }
-
-    @Override
-    public void onDialogNegativeClick(DialogFragment dialog) {
-        // User touched the dialog's negative button
-        Toast.makeText(getApplicationContext(), android.R.string.no,
                 Toast.LENGTH_SHORT).show();
     }
 }
