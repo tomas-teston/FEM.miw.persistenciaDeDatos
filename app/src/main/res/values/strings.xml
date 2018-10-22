@@ -11,6 +11,7 @@
     <string name="editTextPrefSummary">Pulse para teclear el nombre del jugador</string>
     <string name="secondCategoryPrefTitle">Ajustes del juego</string>
     <string name="preferencesText">Ajustes</string>
+    <string name="saveGame">Guardar partida</string>
 
     <!-- Diálogo Final -->
     <string name="txtDialogoFinalTitulo">Fin del juego</string>
