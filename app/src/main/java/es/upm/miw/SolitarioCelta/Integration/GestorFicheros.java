@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 import es.upm.miw.SolitarioCelta.MainActivity;
@@ -34,5 +36,25 @@ public class GestorFicheros {
             Log.i(MainActivity.LOG_TAG, "FILE I/O error: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public String cargarJuego(Context context) {
+        BufferedReader buffer;
+        String partidaRecibida = "";
+
+        try {
+            buffer = new BufferedReader(
+                    new InputStreamReader(context.openFileInput(fileName)));
+
+            partidaRecibida = buffer.readLine();
+            Log.i(MainActivity.LOG_TAG, "Partida leida: " + partidaRecibida);
+
+            buffer.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return partidaRecibida;
     }
 }
