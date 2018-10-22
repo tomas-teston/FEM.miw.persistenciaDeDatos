@@ -8,6 +8,7 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 
 import es.upm.miw.SolitarioCelta.MainActivity;
 
