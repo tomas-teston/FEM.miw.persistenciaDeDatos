@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
+        DialogFragment dialogFragment;
         switch (item.getItemId()) {
             case R.id.menuAbout:
                 startActivity(new Intent(this, About.class));
@@ -110,6 +111,10 @@ public class MainActivity extends AppCompatActivity implements
                 this.mJuego.guardarPartida(getApplicationContext());
                 Toast.makeText(getApplicationContext(), R.string.partidaGuardada,
                         Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.reiniciar:
+                dialogFragment = new ResetDialogFragment();
+                dialogFragment.show(getSupportFragmentManager(), "reset");
                 return true;
             case R.id.cargar:
                 this.setPartidaRecibida(this.mJuego.cargarPartida(getApplicationContext()));
