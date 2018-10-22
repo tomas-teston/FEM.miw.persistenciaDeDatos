@@ -3,6 +3,7 @@ package es.upm.miw.SolitarioCelta;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -13,11 +14,13 @@ import android.widget.Toast;
 
 import java.io.FileOutputStream;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+        LoadDialogFragment.DialogListener {
 
 	JuegoCelta mJuego;
     private final String CLAVE_TABLERO = "TABLERO_SOLITARIO_CELTA";
     public static final String LOG_TAG = "MiW";
+    private String partidaRecibida = "";
 
 	private final int[][] ids = {
 		{       0,        0, R.id.p02, R.id.p03, R.id.p04,        0,        0},
@@ -35,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
         mJuego = new JuegoCelta();
         mostrarTablero();
+    }
+
+    public String getPartidaRecibida() {
+        return partidaRecibida;
+    }
+
+    public void setPartidaRecibida(String partidaRecibida) {
+        this.partidaRecibida = partidaRecibida;
     }
 
     /**
@@ -97,8 +108,39 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.guardar:
                 this.mJuego.guardarPartida(getApplicationContext());
+            case R.id.cargar:
+                this.setPartidaRecibida(this.mJuego.cargarPartida(getApplicationContext()));
+                if (this.getPartidaRecibida() != null) {
+                    if (!this.getPartidaRecibida().equalsIgnoreCase(this.mJuego.serializaTablero())) {
+                        DialogFragment dialogFragment = new LoadDialogFragment();
+                        dialogFragment.show(getSupportFragmentManager(), "load");
+                    } else {
+                        this.cargarJuego(this.getPartidaRecibida());
+                    }
+
+                }
+                return true;
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void cargarJuego(String partida) {
+        this.mJuego.deserializaTablero(partida);
+        this.mostrarTablero();
+        Toast.makeText(getApplicationContext(), R.string.partidaCargada,
+                Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        this.cargarJuego(this.getPartidaRecibida());
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        // User touched the dialog's negative button
+        Toast.makeText(getApplicationContext(), android.R.string.no,
+                Toast.LENGTH_SHORT).show();
     }
 }

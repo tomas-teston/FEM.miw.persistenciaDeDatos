@@ -12,11 +12,19 @@
     <string name="secondCategoryPrefTitle">Ajustes del juego</string>
     <string name="preferencesText">Ajustes</string>
     <string name="saveGame">Guardar partida</string>
+    <string name="cargarGame">Cargar partida</string>
+    <string name="partidaCargada">Partida cargada</string>
 
     <!-- Diálogo Final -->
     <string name="txtDialogoFinalTitulo">Fin del juego</string>
     <string name="txtDialogoFinalPregunta">¿Quiere jugar otra partida?</string>
     <string name="txtDialogoFinalAfirmativo">Sí</string>
     <string name="txtDialogoFinalNegativo">No</string>
+
+    <!-- Diálogo Load -->
+    <string name="txtDialogoLoadTitulo">Cargar un nuevo juego</string>
+    <string name="txtDialogoLoadPregunta">¿Estás seguro que quieres cargar una nueva partida?</string>
+    <string name="txtDialogoLoadAfirmativo">Sí</string>
+    <string name="txtDialogoLoadNegativo">No</string>
 
 </resources>

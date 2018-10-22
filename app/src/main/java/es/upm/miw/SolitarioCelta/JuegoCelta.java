@@ -1,6 +1,8 @@
 package es.upm.miw.SolitarioCelta;
 
 import android.content.Context;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -172,5 +174,9 @@ class JuegoCelta {
 
 	public void guardarPartida(Context context) {
 		GestorFicheros.getInstance().guardarJuego(this.serializaTablero(), context);
+	}
+
+	public String cargarPartida(Context context) {
+		return GestorFicheros.getInstance().cargarJuego(context);
 	}
 }
