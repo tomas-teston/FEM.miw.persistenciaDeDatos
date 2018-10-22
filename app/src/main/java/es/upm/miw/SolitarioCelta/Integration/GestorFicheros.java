@@ -28,10 +28,10 @@ public class GestorFicheros {
         FileOutputStream fos;
 
         try {
-            fos = context.openFileOutput(fileName, Context.MODE_APPEND);
+            fos = context.openFileOutput(fileName, Context.MODE_PRIVATE);
             fos.write(tableroSerializado.getBytes());
             fos.close();
-            Log.i(MainActivity.LOG_TAG, "Click botón Añadir -> Añadido al fichero");
+            Log.i(MainActivity.LOG_TAG, "Guardando en fichero...");
         } catch (Exception e) {
             Log.i(MainActivity.LOG_TAG, "FILE I/O error: " + e.getMessage());
             e.printStackTrace();
