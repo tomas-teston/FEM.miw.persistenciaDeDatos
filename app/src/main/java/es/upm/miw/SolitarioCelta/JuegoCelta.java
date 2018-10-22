@@ -1,5 +1,13 @@
 package es.upm.miw.SolitarioCelta;
 
+import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.io.FileOutputStream;
+
+import es.upm.miw.SolitarioCelta.Integration.GestorFicheros;
+
 class JuegoCelta {
 	static final int TAMANIO = 7;
     private static final int NUM_MOVIMIENTOS = 4;
@@ -160,5 +168,9 @@ class JuegoCelta {
         tablero[TAMANIO / 2][TAMANIO / 2] = 0;   // posición central
 
         estadoJuego = Estado.ESTADO_SELECCION_FICHA;
+	}
+
+	public void guardarPartida(Context context) {
+		GestorFicheros.getInstance().guardarJuego(this.serializaTablero(), context);
 	}
 }

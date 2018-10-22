@@ -1,17 +1,23 @@
 package es.upm.miw.SolitarioCelta;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.Toast;
+
+import java.io.FileOutputStream;
 
 public class MainActivity extends AppCompatActivity {
 
 	JuegoCelta mJuego;
     private final String CLAVE_TABLERO = "TABLERO_SOLITARIO_CELTA";
+    public static final String LOG_TAG = "MiW";
 
 	private final int[][] ids = {
 		{       0,        0, R.id.p02, R.id.p03, R.id.p04,        0,        0},
@@ -89,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.preferences:
                 startActivity(new Intent(this, SCeltaPreferences.class));
                 return true;
+            case R.id.guardar:
+                this.mJuego.guardarPartida(getApplicationContext());
+
         }
         return super.onOptionsItemSelected(item);
     }
