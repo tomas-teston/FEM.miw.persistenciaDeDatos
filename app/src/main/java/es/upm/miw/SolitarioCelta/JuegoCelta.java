@@ -162,6 +162,21 @@ class JuegoCelta {
 	}
 
 	/**
+	 * Puntuación total.
+	 *
+	 * @return puntuación
+	 */
+	public int puntuacionTotal() {
+		int puntuacion = 0;
+		for (int i = 0; i < TAMANIO; i++)
+			for (int j = 0; j < TAMANIO; j++)
+				if (tablero[i][j] == 1) {
+					puntuacion++;
+				}
+		return puntuacion;
+	}
+
+	/**
 	 * Recupera el miJuego a su estado inicial
 	 */
 	public void reiniciar() {
