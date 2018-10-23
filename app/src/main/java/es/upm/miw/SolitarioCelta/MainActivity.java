@@ -1,14 +1,19 @@
 package es.upm.miw.SolitarioCelta;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import es.upm.miw.SolitarioCelta.Integration.GestorBBDD;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     private final String CLAVE_TABLERO = "TABLERO_SOLITARIO_CELTA";
     public static final String LOG_TAG = "MiW";
     private String partidaRecibida = "";
+    private String nombreJugador = "";
+
+    GestorBBDD gdb;
 
 	private final int[][] ids = {
 		{       0,        0, R.id.p02, R.id.p03, R.id.p04,        0,        0},
@@ -31,8 +39,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        gdb = new GestorBBDD(getApplicationContext());
+
         mJuego = new JuegoCelta();
         mostrarTablero();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        this.nombreJugador = sharedPref.getString("playerName", "jugador");
+    }
+
+    @Override
+    protected void onDestroy() {
+        gdb.close();
+        super.onDestroy();
     }
 
     public String getPartidaRecibida() {
@@ -57,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         mostrarTablero();
         if (mJuego.juegoTerminado()) {
+            this.guardarPuntuacion();
             new AlertDialogFragment().show(getFragmentManager(), "ALERT DIALOG");
         }
     }
@@ -133,5 +157,10 @@ public class MainActivity extends AppCompatActivity {
         this.mostrarTablero();
         Toast.makeText(getApplicationContext(), R.string.partidaCargada,
                 Toast.LENGTH_SHORT).show();
+    }
+
+    public void guardarPuntuacion() {
+        Long id = this.gdb.add(this.nombreJugador, this.mJuego.puntuacionTotal());
+        Log.i(LOG_TAG, "Id Jugador: " + String.valueOf(id));
     }
 }
