@@ -11,11 +11,16 @@
     <string name="editTextPrefSummary">Pulse para teclear el nombre del jugador</string>
     <string name="secondCategoryPrefTitle">Ajustes del juego</string>
     <string name="preferencesText">Ajustes</string>
+    <string name="MejoresResultados">Mejores resultados</string>
     <string name="saveGame">Guardar partida</string>
     <string name="cargarGame">Cargar partida</string>
     <string name="partidaGuardada">Partida guardada</string>
     <string name="partidaCargada">Partida cargada</string>
     <string name="reiniciar">Reiniciar partida</string>
+    <string name="borrarMejoresJugadores">Borrar todos</string>
+    <string name="cabeceraId">Id</string>
+    <string name="cabeceraNombre">Nombre jugador</string>
+    <string name="cabeceraPuntuacion">Puntuacion</string>
 
 
     <!-- Diálogo Final -->

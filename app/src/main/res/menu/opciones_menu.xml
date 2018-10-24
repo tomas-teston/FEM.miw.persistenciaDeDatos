@@ -18,14 +18,19 @@
         android:orderInCategory="300"
         android:title="@string/reiniciar"/>
     <item
+        android:id="@+id/mejoresResultados"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:orderInCategory="400"
+        android:title="@string/MejoresResultados"/>
+    <item
         android:id="@+id/preferences"
         android:icon="@android:drawable/ic_menu_preferences"
-        android:orderInCategory="400"
+        android:orderInCategory="500"
         android:title="@string/preferencesText"/>
     <item
         android:id="@+id/menuAbout"
         android:icon="@android:drawable/ic_menu_info_details"
-        android:orderInCategory="500"
+        android:orderInCategory="600"
         android:title="@string/aboutText"/>
 
 </menu>
