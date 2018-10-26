@@ -1,6 +1,7 @@
 package es.upm.miw.SolitarioCelta;
 
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -37,18 +38,11 @@ public class MejoresResultados extends AppCompatActivity implements View.OnClick
 		this.botonBorrarTodos.setOnClickListener(this);
 	}
 
-	public void eliminarTodos() {
-		Toast.makeText(this, "Eliminar todos", Toast.LENGTH_SHORT).show();
-	}
-
 	@Override
 	public void onClick(View v) {
 		if (v.getId() == R.id.borrarTodos) {
-			Log.i(MainActivity.LOG_TAG, "Eliminando mejores jugadas...");
-			GestorBBDD.getInstance(getApplicationContext()).deleteAll();
-			Log.i(MainActivity.LOG_TAG, "Mejores jugadas eliminadas!");
-			Toast.makeText(this, "Mejores jugadas eliminadas", Toast.LENGTH_SHORT).show();
-			this.finish();
+			DialogFragment dialogFragment = new DeleteDialogFragment();
+			dialogFragment.show(getSupportFragmentManager(), "delete");
 		}
 	}
 }

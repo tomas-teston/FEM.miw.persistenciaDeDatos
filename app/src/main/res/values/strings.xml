@@ -41,4 +41,10 @@
     <string name="txtDialogoReiniciarAfirmativo">Sí</string>
     <string name="txtDialogoReiniciarNegativo">No</string>
 
+    <!-- Delete Mejores resultados -->
+    <string name="txtDialogoDeleteTitulo">Eliminar mejores resultados</string>
+    <string name="txtDialogoDeletePregunta">¿Estás seguro que quieres eliminar el registro de los mejores resultados?</string>
+    <string name="txtDialogoDeleteAfirmativo">Sí</string>
+    <string name="txtDialogoDeleteNegativo">No</string>
+
 </resources>
