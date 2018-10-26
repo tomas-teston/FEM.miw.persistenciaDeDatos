@@ -25,10 +25,3 @@ Se deberá seguir con el desarrollo de la aplicación implementando las siguient
 
 
 __Opcionalmente__ se propone mostrar el número de fichas que quedan en el tablero, añadir un cronómetro a la partida (y/o guardar el tiempo empleado), permitir guardar más de una partida, filtrar los mejores resultados por número de fichas o por jugador, añadir preferencias para modificar los colores empleados por la app, etc.
-
-## NOTAS
-
-* Sólo se deberá subir un único fichero comprimido con el proyecto. Antes de generarlo se deberán eliminar los directorios y ficheros innecesarios (`/.git`, `/.idea`, `/build`, `/app/build`, ...)
-
-* Se añadirá un fichero LEEME en el directorio raíz del proyecto con las aclaraciones y observaciones que se consideren oportunas.
-
