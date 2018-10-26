@@ -155,4 +155,33 @@ public class GestorBBDD extends SQLiteOpenHelper {
 
         return listaJugadores;
     }
+
+    public ArrayList<Jugador> filtrar(String nombre, String puntuacion) {
+        String consultaSQL = "SELECT * FROM " + tablaJuego.TABLE_NAME + " WHERE "
+                + tablaJuego.COL_NAME_NOMBRE + " LIKE '%" + nombre +"%'"
+                + " AND "+ tablaJuego.COL_NAME_PUNTUACION + " like '%" + puntuacion + "%'";
+        ArrayList<Jugador> listaJugadores = new ArrayList<>();
+
+        // Accedo a la DB en modo lectura
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(consultaSQL, null);
+
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                Jugador jugador = new Jugador(
+                        cursor.getInt(cursor.getColumnIndex(tablaJuego.COL_NAME_ID)),
+                        cursor.getString(cursor.getColumnIndex(tablaJuego.COL_NAME_NOMBRE)),
+                        cursor.getInt(cursor.getColumnIndex(tablaJuego.COL_NAME_PUNTUACION))
+                );
+
+                listaJugadores.add(jugador);
+                cursor.moveToNext();
+            }
+        }
+
+        cursor.close();
+        db.close();
+
+        return listaJugadores;
+    }
 }

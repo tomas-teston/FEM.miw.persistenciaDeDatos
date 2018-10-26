@@ -18,6 +18,7 @@
     <string name="partidaCargada">Partida cargada</string>
     <string name="reiniciar">Reiniciar partida</string>
     <string name="borrarMejoresJugadores">Borrar todos</string>
+    <string name="filtrarJugadores">Filtrar jugadores</string>
     <string name="cabeceraId">Id</string>
     <string name="cabeceraNombre">Nombre jugador</string>
     <string name="cabeceraPuntuacion">Puntuacion</string>
@@ -46,5 +47,10 @@
     <string name="txtDialogoDeletePregunta">¿Estás seguro que quieres eliminar el registro de los mejores resultados?</string>
     <string name="txtDialogoDeleteAfirmativo">Sí</string>
     <string name="txtDialogoDeleteNegativo">No</string>
+
+    <!-- Filtros Mejores resultados -->
+    <string name="txtFiltroNombre">Filtro por nombre</string>
+    <string name="txtFiltroPuntuacion">Filtro por puntuación</string>
+
 
 </resources>
