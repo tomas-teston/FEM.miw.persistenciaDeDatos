@@ -3,6 +3,7 @@ package es.upm.miw.SolitarioCelta;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,9 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import es.upm.miw.SolitarioCelta.Integration.GestorBBDD;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 	JuegoCelta mJuego;
     private final String CLAVE_TABLERO = "TABLERO_SOLITARIO_CELTA";
     public static final String LOG_TAG = "MiW";
+    public static final String JUGADORES_ID = "JUGADORES";
     private String partidaRecibida = "";
     private String nombreJugador = "";
 
@@ -39,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        gdb = new GestorBBDD(getApplicationContext());
+        gdb = GestorBBDD.getInstance(getApplicationContext());
 
         mJuego = new JuegoCelta();
         mostrarTablero();
@@ -146,6 +151,19 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 }
+                return true;
+            case R.id.mejoresResultados:
+                Intent intent = new Intent(getApplicationContext(), MejoresResultados.class);
+                ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+                jugadores = this.gdb.getAll();
+
+                if (jugadores.isEmpty()) {
+                    Toast.makeText(this, "Ningún jugador registrado.", Toast.LENGTH_SHORT).show();
+                } else {
+                    intent.putParcelableArrayListExtra(JUGADORES_ID, jugadores);
+                    startActivity(intent);
+                }
+
                 return true;
 
         }

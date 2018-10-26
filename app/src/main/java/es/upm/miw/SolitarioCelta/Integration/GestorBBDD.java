@@ -20,13 +20,21 @@ public class GestorBBDD extends SQLiteOpenHelper {
     // Número de version
     private static final int DB_VERSION = 1;
 
+    private static GestorBBDD instance = null;
     /**
      * Constructor
      *
      * @param contexto Context
      */
-    public GestorBBDD(Context contexto) {
+    private GestorBBDD(Context contexto) {
         super(contexto, DB_NAME, null, DB_VERSION);
+    }
+
+    public static GestorBBDD getInstance(Context context) {
+        if (instance == null) {
+            instance = new GestorBBDD(context);
+        }
+        return instance;
     }
 
     /**
@@ -101,6 +109,18 @@ public class GestorBBDD extends SQLiteOpenHelper {
 
         // Realiza la inserción
         return db.insert(tablaJuego.TABLE_NAME, null, valores);
+    }
+
+    /**
+     * Elimina todos los registros de la tabla
+     *
+     */
+    public void deleteAll() {
+
+        // Obtiene la DB en modo escritura
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.execSQL("delete from "+ tablaJuego.TABLE_NAME);
     }
 
 

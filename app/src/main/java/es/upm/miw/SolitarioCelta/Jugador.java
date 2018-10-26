@@ -35,6 +35,30 @@ public class Jugador implements Parcelable {
         this.puntuacion = in.readInt();
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPuntuacion() {
+        return puntuacion;
+    }
+
+    public void setPuntuacion(int puntuacion) {
+        this.puntuacion = puntuacion;
+    }
+
     public static final Creator<Jugador> CREATOR = new Creator<Jugador>() {
         @Override
         public Jugador createFromParcel(Parcel source) {
