@@ -12,6 +12,7 @@ import es.upm.miw.SolitarioCelta.Integration.GestorFicheros;
 
 class JuegoCelta {
 	static final int TAMANIO = 7;
+	static final int NUM_FICHAS = 32;
     private static final int NUM_MOVIMIENTOS = 4;
 	private int[][] tablero;
     private static final int[][] TABLERO_INICIAL = { // Posiciones válidas del tablero

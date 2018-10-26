@@ -7,6 +7,89 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 tools:context=".MainActivity">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.30"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/filtroNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.20"
+                    android:text="@string/txtFiltroNombre" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.70"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editFiltroNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.30"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/filtroPuntuacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.20"
+                    android:text="@string/txtFiltroPuntuacion" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.70"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/editFiltroPuntuacion"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -37,20 +120,37 @@ tools:context=".MainActivity">
 
     </LinearLayout>
 
-<ListView
-    android:id="@+id/lvListadoElementos"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="0.85">
+    <ListView
+        android:id="@+id/lvListadoElementos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.75">
 
-</ListView>
+    </ListView>
 
-<Button
-    android:id="@+id/borrarTodos"
-    android:layout_width="wrap_content"
-    android:layout_height="0dp"
-    android:layout_weight="0.10"
-    android:text="@string/borrarMejoresJugadores"
-    />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/borrarTodos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:text="@string/borrarMejoresJugadores"
+            />
+
+        <Button
+            android:id="@+id/botonFiltrar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:text="@string/filtrarJugadores"
+            />
+
+    </LinearLayout>
+
 
 </LinearLayout>
